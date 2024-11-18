@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('target_url');
-            $table->string('short_url')->unique();
+            $table->string('slug')->unique();
+            $table->string('redirect_url')->unique();
             $table->timestamps();
         });
     }

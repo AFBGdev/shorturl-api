@@ -49,11 +49,13 @@ class LinkController extends Controller
             ]);
 
             $targetUrl = filter_var($request->target, FILTER_SANITIZE_URL);
-            $shortUrl = strtolower(Str::random(8));
+            $slug = strtolower(Str::random(8));
+            $redirectUrl = url("/".$slug);
 
             $link = Link::create([
                 'target_url' => $targetUrl,
-                'short_url' => $shortUrl,
+                'slug' => $slug,
+                'redirect_url' => $redirectUrl,
             ]);
 
             $responseData = [
