@@ -11,6 +11,7 @@ class Link extends Model
 
     protected $fillable = [
         'target_url',
-        'short_url'
+        'slug',
+        'redirect_url'
     ];
 }
