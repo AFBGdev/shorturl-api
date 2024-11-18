@@ -12,9 +12,10 @@ class RedirectController extends Controller
         try {
             if (!$linkSlug) return redirect('/');
 
-            $linkFound = Link::where('short_url', $linkSlug)->first();
+            $linkFound = Link::where('slug', $linkSlug)->first();
 
             $redirectLink = $linkFound->target_url;
+
             return redirect($redirectLink, 302);
 
         } catch (\Exception $error) {
