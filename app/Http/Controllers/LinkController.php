@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Link;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class LinkController extends Controller
 {
@@ -20,7 +22,37 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $request->validate([
+                'target' => ['required'],
+            ]);
+
+            $targetUrl = filter_var($request->target, FILTER_SANITIZE_URL);
+            $shortUrl = strtolower(Str::random(8));
+
+            $link = Link::create([
+                'target_url' => $targetUrl,
+                'short_url' => $shortUrl,
+            ]);
+
+            $responseData = [
+                'status' => "success",
+                'data' => $link,
+            ];
+
+            return response()->json($responseData);
+
+        } catch (\Exception $error) {
+            Log::error($error->getMessage());
+
+            return response()->json([
+                "status" => "error",
+                "error" => [
+                    "code" => "8069ef56-d013-4fb5-bef0-8fef494aaeda",
+                    "message" => "Internal server error!."
+                    ]
+                ], 500);
+        }
     }
 
     /**
