@@ -99,6 +99,39 @@ class LinkController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+
+            $linkFound = Link::all()->find($id);
+
+            if (!$linkFound) {
+                return response()->json([
+                    "status" => "error",
+                    "error" => [
+                        "code" => "7a76780c-c337-4058-b74b-71dccff710fe",
+                        "message" => "Link not found!."
+                    ]
+                    ], 404);
+            }
+
+            $linkFound->delete();
+
+            $responseData = [
+                'status' => "success",
+                'data' => $id,
+            ];
+
+            return response()->json($responseData, 200);
+
+        } catch (\Exception $error) {
+            Log::error($error->getMessage());
+
+            return response()->json([
+                "status" => "error",
+                "error" => [
+                    "code" => "924c7046-dd08-48f1-8cd9-a17ebb744ded",
+                    "message" => "Internal server error!."
+                    ]
+                ], 500);
+        }
     }
 }
