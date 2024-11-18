@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LinkController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -10,3 +11,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/ping', function () {
     return response()->json(["status" => "success", "data" => "Hellow world"]);
 });
+
+Route::apiResource('links', LinkController::class);
