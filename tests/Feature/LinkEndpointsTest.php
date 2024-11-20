@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Link;
 use Database\Seeders\LinkSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -62,5 +63,24 @@ class LinkEndpointsTest extends TestCase
                         ])
                     )
             );
+    }
+
+    public function test_can_delete_a_link(): void {
+        $linkToDelete = Link::factory()->create();
+
+        $this->assertDatabaseCount('links', 4);
+
+        $linkId = $linkToDelete['id'];
+
+        $response = $this->delete('api/v1/links/'.$linkId);
+
+        $this->assertDatabaseCount('links', 3);
+
+        $response
+            ->assertStatus(200)
+            ->assertExactJson([
+                'status' => "success",
+                'data' => $linkId
+            ]);
     }
 }
