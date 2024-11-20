@@ -83,4 +83,17 @@ class LinkEndpointsTest extends TestCase
                 'data' => $linkId
             ]);
     }
+
+    public function test_will_fail_with_a_404_if_link_to_delete_is_not_found(): void {
+        $response = $this->delete('api/v1/links/abc123');
+
+        $response
+            ->assertStatus(404)
+            ->assertJson(fn (AssertableJson $jsonResponse) =>
+                $jsonResponse->hasAll(['status', 'error'])
+                    ->has('error', fn (AssertableJson $errorObject) =>
+                        $errorObject->hasAll(['code', 'message'])
+                    )
+            );
+    }
 }
