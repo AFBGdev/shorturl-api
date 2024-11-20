@@ -1,5 +1,5 @@
 {
-    "name": "shorturl-api",
+    "name": "laravel/shorturl_api",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
