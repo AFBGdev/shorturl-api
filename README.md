@@ -2,7 +2,7 @@
 
 ## Run project
 
-### .env file
+### Set .env file
 
 Duplicate the `.env.example` file and set the database variables
 
@@ -13,9 +13,11 @@ DB_USERNAME=
 DB_PASSWORD=
 ```
 
-### MySQL service
+### Run locally
 
-You need to run the MySQL service. This project includes a `docker-compose.yml` file, which you can use to run the service. Run this command:
+To run the project locally. Just run the next commands in your terminal
+
 ```
-  docker compose up -d
+pnpm install
+pnpm run dev
 ```
