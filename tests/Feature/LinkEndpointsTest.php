@@ -42,4 +42,25 @@ class LinkEndpointsTest extends TestCase
                     )
             );
     }
+
+    public function test_can_return_all_links(): void {
+        $response = $this->get('api/v1/links');
+
+        $response
+            ->assertStatus(200)
+            ->assertJson(fn (AssertableJson $jsonResponse) =>
+                $jsonResponse->hasAll(['status', 'data'])
+                    ->has('data', 3)
+                    ->has('data.0', fn (AssertableJson $linkObject) =>
+                        $linkObject->hasAll([
+                            'id',
+                            'target_url',
+                            'slug',
+                            'redirect_url',
+                            'updated_at',
+                            'created_at'
+                        ])
+                    )
+            );
+    }
 }
