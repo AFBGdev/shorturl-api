@@ -12,3 +12,9 @@ DB_DATABASE=
 DB_USERNAME=
 DB_PASSWORD=
 ```
+
+To specify the front URL and avoid CORS policy errors, you must set the next env variable
+
+```
+FRONT_ALLOWED_URL=""
+```
