@@ -11,6 +11,9 @@ if [[ "${!ENV_VAR_NAME}" = "true" ]]; then
   php artisan down
 fi
 
+# Install Composer dependencies without dev dependencies
+composer install --optimize-autoloader --no-dev
+
 # Build assets using NPM
 npm run build
 
