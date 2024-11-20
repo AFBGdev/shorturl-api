@@ -1,5 +1,9 @@
 <?php
 
+$allowedOrigins = [
+    env('FRONT_ALLOWED_URL', '')
+];
+
 return [
 
     /*
@@ -19,7 +23,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:5173'],
+    'allowed_origins' => $allowedOrigins,
 
     'allowed_origins_patterns' => [],
 
