@@ -1,5 +1,19 @@
 # SHORTURL API
 
+This project was deployed on Railway. Go to [https://shorturl-api-production.up.railway.app](https://shorturl-api-production.up.railway.app)
+
+The Stack that I used in this project are:
+
+- Laravel v11.32.0
+- PHP v8.2.22
+- Node v22.11.0
+- PHPUnit
+
+## Routes
+
+- `/{slug}` = Redirects to the target url
+- `/api/v1/...` = Api routes
+
 ## Run project
 
 ### Set .env file
