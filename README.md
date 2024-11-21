@@ -31,7 +31,7 @@ This project stores data into a MySQL database, so; you must to start a MySQL se
 docker compose up -d
 ```
 
-> **Note:** This image use your `.env` config to set the `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE` and `PORT` image environment variables.
+> **Note:** This file use your `.env` config to set the `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE` and `PORT` image environment variables.
 
 #### Build tables (Migrations)
 
