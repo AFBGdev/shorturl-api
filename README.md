@@ -20,3 +20,39 @@ To specify the front URL and avoid CORS policy errors, you must set the next env
 
 FRONT_ALLOWED_URL="http://localhost:5173"
 ```
+
+### Database
+
+#### MySQL service
+
+This project stores data into a MySQL database, so; you must to start a MySQL service. You can do this from third parties like XAMMP or an oline service, but I have included a `docker-compose.yml` file that you can use to start the MySQL service. Just run:
+
+```
+docker compose up -d
+```
+
+> **Note:** This image use your `.env` config to set the `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE` and `PORT` image environment variables.
+
+#### Build tables (Migrations)
+
+To create the necessary tables, you can use the artisan command to buld them. Just run:
+
+```
+php artisan migrate
+```
+
+### 🚀 Start Server (Redirect service and API)
+
+To start the server in your local environment, just run:
+
+```
+php artisan serve
+```
+
+## Test
+
+There are some tests in this project using *PHPUnit*. To run these, just run:
+
+```
+php artisan test
+```
